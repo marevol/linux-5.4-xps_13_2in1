@@ -1310,10 +1310,10 @@ static u32 __extract(u8 *report, unsigned offset, int n)
 u32 hid_field_extract(const struct hid_device *hid, u8 *report,
 			unsigned offset, unsigned n)
 {
-	if (n > 32) {
-		hid_warn_once(hid, "%s() called with n (%d) > 32! (%s)\n",
+	if (n > 256) {
+		hid_warn_once(hid, "%s() called with n (%d) > 256! (%s)\n",
 			      __func__, n, current->comm);
-		n = 32;
+		n = 256;
 	}
 
 	return __extract(report, offset, n);
